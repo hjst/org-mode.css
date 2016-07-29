@@ -1,0 +1,26 @@
+* org-mode CSS
+
+A stylesheet which makes rendered HTML exports from an Org document look like the unrendered buffer in Emacs. Yes, it's daft. Inspired by [[https://github.com/mrcoles/markdown-css/][Peter Coles' markdown.css]]. 
+
+- [[https://henrytodd.org][View an example]]
+
+** How to use it
+
+1. The styles assume that you're using [[https://github.com/necolas/normalize.css/][Normalize.css]] as a base, so grab that first.
+2. Add the =org-mode.css= file to your CSS build, this will style the various elements.
+3. Define a colour scheme of some sort. Everyone has their preference. If you like [[http://ethanschoonover.com/solarized][Solarized]] you can use =solarized-light.css= as-is, or use it as a base to define your own colours.
+
+I haven't made any assumptions about fonts because people use all sorts. My own site has...
+
+#+BEGIN_SRC css
+  body {
+      font-family: "Inconsolata", monospace;
+  }
+#+END_SRC
+
+...you'll want to add something similar.
+
+** Caveats
+
+- =<code>= / =<pre>= styles require a choice: if you're using a monospace font for the body text you need to differentiate them somehow. I chose to omit the "=" symbols from from inline =<code>= elements, and change their background colour instead.
+- Many org-mode features still need to be implemented, I've only done the basics of what I use. Tables are the obvious omission.

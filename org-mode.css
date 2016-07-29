@@ -1,0 +1,63 @@
+h1:before {
+    content: "#+TITLE: ";
+}
+
+h2:before {
+    content: "* ";
+}
+
+h3:before {
+    content: "** ";
+}
+
+h4:before {
+    content: "*** ";
+}
+
+h5:before {
+    content: "**** ";
+}
+
+h6:before {
+    content: "***** ";
+}
+
+h1:before,
+h2:before,
+h3:before,
+h4:before,
+h5:before,
+h6:before {
+    display: inline;
+}
+
+em, i {
+    font-style: normal;
+}
+em:before,
+em:after,
+i:before,
+i:after {
+    content: "/";
+    display: inline;
+}
+
+strong, b {
+    font-weight: bold;
+}
+strong:before,
+strong:after,
+b:before,
+b:after {
+    content: "*";
+    display: inline;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 1em;
+}
+ul li:before {
+    content: "- ";
+    display: inline;
+}
