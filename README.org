@@ -23,4 +23,5 @@ I haven't made any assumptions about fonts because people use all sorts. My own 
 ** Caveats
 
 - =<code>= / =<pre>= styles require a choice: if you're using a monospace font for the body text you need to differentiate them somehow. I chose to omit the "=" symbols from from inline =<code>= elements, and change their background colour instead.
+- Italics in Org are (by default) rendered like =/this/= with an underline. Some themes (e.g. Leuven) remove the underline, others might use actual italics if the font supports it. I've stuck with the default, but you might want to change this to suit your overall style & font combos.
 - Many org-mode features still need to be implemented, I've only done the basics of what I use. Tables are the obvious omission.
