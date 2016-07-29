@@ -61,3 +61,11 @@ ul li:before {
     content: "- ";
     display: inline;
 }
+
+/* Nested unordered lists alternate between + and - markers */
+ul li > ul li:before {
+    content: "+ ";
+}
+ul li > ul li > ul li:before {
+    content: "- ";
+}
