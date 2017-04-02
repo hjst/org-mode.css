@@ -54,3 +54,7 @@ pre.src:before,
 pre.src:after {
     color: #93a1a1;
 }
+
+table {
+    color: #859900;
+}

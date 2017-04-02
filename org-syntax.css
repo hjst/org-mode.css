@@ -140,8 +140,25 @@ table thead tr,
 table thead tr th,
 table colgroup,
 table > * {
-    border-style: !important none;
+    border-style: none;
+}
+table thead {
+    border: 2px solid;
+}
+table thead tr th {
+    border-left: 2px solid;
+    border-right: 2px solid;
 }
 table tbody tr td {
-    border: 1px dashed #657b83;
+    border-left: 2px solid;
+    border-right: 2px solid;
+}
+table tbody {
+    border-bottom: 2px solid;
+}
+th {
+    text-align: left;
+}
+th, td {
+    padding: 0.5em 1em;
 }
