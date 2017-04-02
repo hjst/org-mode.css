@@ -70,3 +70,16 @@ ul li > ul li:before {
 ul li > ul li > ul li:before {
     content: "- ";
 }
+
+/* Table styling */
+table,
+table thead,
+table thead tr,
+table thead tr th,
+table colgroup,
+table > * {
+    border-style: !important none;
+}
+table tbody tr td {
+    border: 1px dashed #657b83;
+}
