@@ -42,13 +42,9 @@ a:hover {
 
 code {
     background-color: #eee8d5;
-    padding: 0.1em;
 }
 
 blockquote, pre {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0.5em;
     background-color: #eee8d5;
 }
 
@@ -56,27 +52,5 @@ blockquote:before,
 blockquote:after,
 pre.src:before,
 pre.src:after {
-    display: block;
     color: #93a1a1;
-}
-
-blockquote:before {
-    content: "#+BEGIN_QUOTE";
-}
-blockquote:after {
-    content: "#+END_QUOTE";
-}
-
-blockquote p:first-child {
-    margin-top: 0.1em;
-}
-blockquote p:last-child {
-    margin-bottom: 0.1em;
-}
-
-pre.src:before {
-    content: "#+BEGIN_SRC";
-}
-pre.src:after {
-    content: "#+END_SRC";
 }

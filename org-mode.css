@@ -1,3 +1,6 @@
+/* Org mode export always sets a single <h1> from the title (or filename).
+   All of the top-level headings are rendered as <h2>, hence why <hx> here
+   has x-1 preceding stars */
 h1:before {
     content: "#+TITLE: ";
 }
@@ -37,6 +40,17 @@ span.DONE {
     font-size: 80%;
 }
 
+/* TOCs look too "busy" to me with all the links underlined */
+#table-of-contents a {
+    text-decoration: none;
+}
+
+p {
+    line-height: 120%;
+}
+
+/* How emphasised elements are drawn depends heavily on your org-mode theme
+   and font choice in emacs. See the "caveats" section in README.org */
 em, i {
     font-style: normal;
     text-decoration: underline;
@@ -59,6 +73,48 @@ b:after {
     content: "*";
     display: inline;
 }
+
+/* Preformatted text & code blocks
+   This is deliberately minimal as there are many options here. E.g. see:
+   http://mediatemple.net/blog/tips/considerations-for-styling-the-pre-tag/ */
+code {
+    padding: 0.1em;
+}
+
+blockquote, pre {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.5em;
+}
+
+blockquote:before,
+blockquote:after,
+pre.src:before,
+pre.src:after {
+    display: block;
+}
+
+blockquote:before {
+    content: "#+BEGIN_QUOTE";
+}
+blockquote:after {
+    content: "#+END_QUOTE";
+}
+
+blockquote p:first-child {
+    margin-top: 0.1em;
+}
+blockquote p:last-child {
+    margin-bottom: 0.1em;
+}
+
+pre.src:before {
+    content: "#+BEGIN_SRC";
+}
+pre.src:after {
+    content: "#+END_SRC";
+}
+
 
 ul {
     list-style-type: none;
