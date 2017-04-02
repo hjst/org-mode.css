@@ -80,6 +80,9 @@ b:after {
 code {
     padding: 0.1em;
 }
+pre {
+    font-size: 80%;
+}
 
 blockquote, pre {
     margin-left: 0;
