@@ -14,6 +14,7 @@ I haven't made any assumptions about fonts because people use all sorts. My own 
 
 #+BEGIN_SRC css
   body {
+      @import 'https://fonts.googleapis.com/css?family=Inconsolata';
       font-family: "Inconsolata", monospace;
   }
 #+END_SRC
