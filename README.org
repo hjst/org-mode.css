@@ -1,28 +1,112 @@
-* org-mode CSS
+#+OPTIONS: toc:nil num:nil html-style:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hjst/org-mode.css/master/combined.css" />
+#+TITLE:Org mode CSS
 
 A stylesheet which makes rendered HTML exports from an Org document look like the unrendered buffer in Emacs. Yes, it's daft. Inspired by [[https://github.com/mrcoles/markdown-css/][Peter Coles' markdown.css]]. 
 
-- [[https://henrytodd.org][View an example]]
+- [[https://hjst.github.io/org-mode.css/init.html][View a longer example document]]
 
-** How to use it
+* How to use it
 
-1. The styles assume that you're using [[https://github.com/necolas/normalize.css/][Normalize.css]] as a base, so grab that first.
-2. Add the =org-mode.css= file to your CSS build, this will style the various elements.
-3. Define a colour scheme of some sort. Everyone has their preference. If you like [[http://ethanschoonover.com/solarized][Solarized]] you can use =solarized-light.css= as-is, or use it as a base to define your own colours.
+1. The styles assume [[https://github.com/necolas/normalize.css/][Normalize.css]] as a base, so grab that first.
+2. Add the =org-syntax.css= file to your build, this will style the various elements.
+3. Define a colour scheme of some sort. If you like [[http://ethanschoonover.com/solarized][Solarized]] you can use the included =solarized-light.css= as-is, or use it as a starting point for something else.
+4. Add any additional styling you need to fit in with your design (headers, footers, content width etc.).
 
-I haven't made any assumptions about fonts because people use all sorts. My own site has...
+I haven't specified any fonts, so you'll need to pick one. You can copy/paste the following into an HTML document to try it out without cloning anything locally:
 
-#+BEGIN_SRC css
-  body {
-      @import 'https://fonts.googleapis.com/css?family=Inconsolata';
-      font-family: "Inconsolata", monospace;
-  }
+#+BEGIN_SRC html
+  <html>
+  <head>
+    <!-- Step 1: Normalize -->
+    <link rel="stylesheet" type="text/css"
+      href="https://necolas.github.io/normalize.css/6.0.0/normalize.css" />
+    <!-- Step 2: Org syntax styles -->
+    <link rel="stylesheet" type="text/css"
+      href="https://raw.githubusercontent.com/hjst/org-mode.css/master/org-syntax.css" />
+    <!-- Step 3: Colour scheme -->
+    <link rel="stylesheet" type="text/css"
+      href="https://raw.githubusercontent.com/hjst/org-mode.css/master/solarized-light.css" />
+    <!-- Step 4: Additional personal styles -->
+    <style type="text/css">
+      body {
+        @import 'https://fonts.googleapis.com/css?family=Inconsolata';
+        font-family: "Inconsolata", monospace;
+      }
+      #content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 50em;
+      }
+      pre {
+        overflow-x: auto;
+      }
+      #postamble {
+        margin-top: 10em;
+        text-align: center;
+        font-size: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <h1>org-mode.css</h1>
+      <p>
+        This is how normal paragraph text will render.
+        Thrilling stuff.
+      </p>
+      <h2>Struggling to think of a sub-heading</h2>
+      <p>
+        Also normal paragraph text, this time as a lead-in for that
+        most exciting of examples: the unordered list!
+      </p>
+      <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+      </ul>
+    </div>
+  </body>
 #+END_SRC
 
-...you'll want to add something similar.
+* Caveats
 
-** Caveats
+=<code>= / =<pre>= styles require a choice: if you're using a monospace font for the body text you need to differentiate them somehow. I chose to omit the "=" symbols from from inline =<code>= elements, and change their background colour instead.
 
-- =<code>= / =<pre>= styles require a choice: if you're using a monospace font for the body text you need to differentiate them somehow. I chose to omit the "=" symbols from from inline =<code>= elements, and change their background colour instead.
-- Italics in Org are (by default) rendered like =/this/= with an underline. Some themes (e.g. Leuven) remove the underline, others might use actual italics if the font supports it. I've stuck with the default, but you might want to change this to suit your overall style & font combos.
-- Many org-mode features still need to be implemented, I've only done the basics of what I use. Tables are the obvious omission.
+Italics in Org are (by default) rendered like =/this/= with an underline. Some themes (e.g. Leuven) remove the underline, others might use actual italics if the font supports it. I've stuck with the default, but you might want to change this to suit your overall style & font combos.
+
+Tables aren't very well supported. Org lets you do some crazy things with tables, and I'm lazy.
+
+| Feature              | Possible? | Status  |
+|----------------------+-----------+---------|
+| Headers & borders    | Totally   | Done    |
+| Column grouping      | Probably  | One day |
+| Column alignment     | Maybe     | Maybe   |
+| Sortable columns     | Maybe     | Maybe   |
+| Row grouping         | Maybe     | Maybe   |
+| Reveal formulas      | Er…       | No      |
+| Org-Plot integration | Actually… | No      |
+
+* TODO Yet to be implemented
+
+- [-] Lists
+  - [X] Nested with indentation
+  - [X] Alternating bullet styles
+  - [X] Checkbox-style lists
+  - [ ] Percentage complete markers on lists =[%]=
+- Complex table layouts (e.g. column groups)
+- Images (borders & padding?)
+- Property drawers
+- Deadline/schedule items
+- Timestamps & tags in general
+- Todo states other than "TODO" and "DONE"
+
+* But I just want a single include statement to put in my org file header!
+
+This is all very well, but maybe you don't want to bother tweaking anything. Maybe you just want a single, combined, remote-hosted CSS file you can include in the header of your Org files for easy exporting. How about this:
+
+#+BEGIN_SRC org
+  ,#+OPTIONS: toc:nil num:nil html-style:nil
+  ,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hjst/org-mode.css/master/combined.css" />
+#+END_SRC
+
