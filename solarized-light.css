@@ -27,6 +27,9 @@ h4 { color: #268bd2; }
 h5 { color: #b58900; }
 h6 { color: #2aa198; }
 
+span.TODO { color: #2aa198; }
+span.DONE { color: #859900; }
+
 a {
     color: #b58900;
 }

@@ -31,6 +31,12 @@ h6:before {
     display: inline;
 }
 
+span.TODO,
+span.DONE {
+    font-weight: bold;
+    font-size: 80%;
+}
+
 em, i {
     font-style: normal;
     text-decoration: underline;
