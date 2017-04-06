@@ -656,7 +656,7 @@ table {
     color: #859900;
 }
 body {
-    @import 'https://fonts.googleapis.com/css?family=Inconsolata';
+    @import url('https://fonts.googleapis.com/css?family=Inconsolata');
     font-family: "Inconsolata", monospace;
 }
 #content {

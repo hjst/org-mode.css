@@ -29,7 +29,7 @@ You can copy/paste the following into the =<head>= section of an Org HTML export
     <!-- Step 4: Additional personal styles -->
     <style type="text/css">
       body {
-        @import 'https://fonts.googleapis.com/css?family=Inconsolata';
+        @import url('https://fonts.googleapis.com/css?family=Inconsolata');
         font-family: "Inconsolata", monospace;
       }
       #content {
