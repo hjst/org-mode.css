@@ -1,5 +1,5 @@
 #+OPTIONS: toc:nil num:nil html-style:nil
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hjst/org-mode.css/master/combined.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://hjst.github.io/org-mode.css/combined.css" />
 #+TITLE:Org mode CSS
 
 A stylesheet which makes rendered HTML exports from an Org document look like the unrendered buffer in Emacs. Yes, it's daft. Inspired by [[https://github.com/mrcoles/markdown-css/][Peter Coles' markdown.css]]. 
@@ -22,10 +22,10 @@ You can copy/paste the following into the =<head>= section of an Org HTML export
       href="https://necolas.github.io/normalize.css/6.0.0/normalize.css" />
     <!-- Step 2: Org syntax styles -->
     <link rel="stylesheet" type="text/css"
-      href="https://raw.githubusercontent.com/hjst/org-mode.css/master/org-syntax.css" />
+      href="https://hjst.github.io/org-mode.css/org-syntax.css" />
     <!-- Step 3: Colour scheme -->
     <link rel="stylesheet" type="text/css"
-      href="https://raw.githubusercontent.com/hjst/org-mode.css/master/solarized-light.css" />
+      href="https://hjst.github.io/org-mode.css/solarized-light.css" />
     <!-- Step 4: Additional personal styles -->
     <style type="text/css">
       body {
@@ -53,7 +53,7 @@ This is all very well, but maybe you don't want to bother tweaking anything. May
 
 #+BEGIN_SRC org
   ,#+OPTIONS: toc:nil num:nil html-style:nil
-  ,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hjst/org-mode.css/master/combined.css" />
+  ,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://hjst.github.io/org-mode.css/combined.css" />
 #+END_SRC
 
 * Caveats
