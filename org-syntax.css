@@ -145,6 +145,9 @@ table colgroup,
 table > * {
     border-style: none;
 }
+table {
+    margin: 2em 0;
+}
 table thead {
     border: 2px solid;
 }
