@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Org mode CSS</title>
-<!-- 2017-04-06 Thu 23:03 -->
+<!-- 2017-04-06 Thu 23:54 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Henry Todd" />
@@ -101,7 +101,7 @@ You can copy/paste the following into the <code>&lt;head&gt;</code> section of a
   &lt;!-- Step 4: Additional personal styles --&gt;
   &lt;style type="text/css"&gt;
     body {
-      @import 'https://fonts.googleapis.com/css?family=Inconsolata';
+      @import url('https://fonts.googleapis.com/css?family=Inconsolata');
       font-family: "Inconsolata", monospace;
     }
     #content {
@@ -122,7 +122,7 @@ You can copy/paste the following into the <code>&lt;head&gt;</code> section of a
 </div>
 
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">But I just want an include statement to put in my org file header!</h2>
+<h2 id="sec-2">I just want to copy/paste a thing in my org file!</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 This is all very well, but maybe you don't want to bother tweaking anything. Maybe you just want a single, combined, remote-hosted CSS file you can include in the header of your Org files for easy exporting. How about this:
@@ -130,10 +130,14 @@ This is all very well, but maybe you don't want to bother tweaking anything. May
 
 <div class="org-src-container">
 
-<pre class="src src-org">#+OPTIONS: toc:nil num:nil html-style:nil
+<pre class="src src-org">#+OPTIONS: html-style:nil num:nil toc:nil
 #+HTML_HEAD: &lt;link rel="stylesheet" type="text/css" href="https://hjst.github.io/org-mode.css/combined.css" /&gt;
 </pre>
 </div>
+
+<p>
+The <code>html-style:nil</code> bit disables the default Org export CSS. You almost certainly also want <code>num:nil</code> to suppress section numbering (it looks daft with this styling). For long documents you might delete the <code>toc:nil</code> to get a table of contents.
+</p>
 </div>
 </div>
 
@@ -254,8 +258,8 @@ I also haven't tested it in anything other than Firefox yet, so I'm sure some of
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Henry Todd</p>
-<p class="date">Created: 2017-04-06 Thu 23:03</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2017-04-06 Thu 23:54</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -47,14 +47,16 @@ You can copy/paste the following into the =<head>= section of an Org HTML export
 
 #+END_SRC
 
-* But I just want an include statement to put in my org file header!
+* I just want to copy/paste a thing in my org file!
 
 This is all very well, but maybe you don't want to bother tweaking anything. Maybe you just want a single, combined, remote-hosted CSS file you can include in the header of your Org files for easy exporting. How about this:
 
 #+BEGIN_SRC org
-  ,#+OPTIONS: toc:nil num:nil html-style:nil
+  ,#+OPTIONS: html-style:nil num:nil toc:nil
   ,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://hjst.github.io/org-mode.css/combined.css" />
 #+END_SRC
+
+The =html-style:nil= bit disables the default Org export CSS. You almost certainly also want =num:nil= to suppress section numbering (it looks daft with this styling). For long documents you might delete the =toc:nil= to get a table of contents.
 
 * Caveats
 
