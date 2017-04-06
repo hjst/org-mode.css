@@ -13,10 +13,9 @@ A stylesheet which makes rendered HTML exports from an Org document look like th
 3. Define a colour scheme of some sort. If you like [[http://ethanschoonover.com/solarized][Solarized]] you can use the included =solarized-light.css= as-is, or use it as a starting point for something else.
 4. Add any additional styling you need to fit in with your design (headers, footers, content width etc.).
 
-I haven't specified any fonts, so you'll need to pick one. You can copy/paste the following into an HTML document to try it out without cloning anything locally:
+You can copy/paste the following into the =<head>= section of an Org HTML export to try it out (remember to remove the default CSS!):
 
 #+BEGIN_SRC html
-  <html>
   <head>
     <!-- Step 1: Normalize -->
     <link rel="stylesheet" type="text/css"
@@ -34,13 +33,10 @@ I haven't specified any fonts, so you'll need to pick one. You can copy/paste th
         font-family: "Inconsolata", monospace;
       }
       #content {
-        margin-left: auto;
-        margin-right: auto;
+        margin: 1em auto;
         max-width: 50em;
       }
-      pre {
-        overflow-x: auto;
-      }
+      pre { overflow-x: auto; }
       #postamble {
         margin-top: 10em;
         text-align: center;
@@ -48,25 +44,16 @@ I haven't specified any fonts, so you'll need to pick one. You can copy/paste th
       }
     </style>
   </head>
-  <body>
-    <div id="content">
-      <h1>org-mode.css</h1>
-      <p>
-        This is how normal paragraph text will render.
-        Thrilling stuff.
-      </p>
-      <h2>Struggling to think of a sub-heading</h2>
-      <p>
-        Also normal paragraph text, this time as a lead-in for that
-        most exciting of examples: the unordered list!
-      </p>
-      <ul>
-        <li>First</li>
-        <li>Second</li>
-        <li>Third</li>
-      </ul>
-    </div>
-  </body>
+
+#+END_SRC
+
+* But I just want an include statement to put in my org file header!
+
+This is all very well, but maybe you don't want to bother tweaking anything. Maybe you just want a single, combined, remote-hosted CSS file you can include in the header of your Org files for easy exporting. How about this:
+
+#+BEGIN_SRC org
+  ,#+OPTIONS: toc:nil num:nil html-style:nil
+  ,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hjst/org-mode.css/master/combined.css" />
 #+END_SRC
 
 * Caveats
@@ -87,6 +74,8 @@ Tables aren't very well supported. Org lets you do some crazy things with tables
 | Reveal formulas      | Er…       | No      |
 | Org-Plot integration | Actually… | No      |
 
+I also haven't tested it in anything other than Firefox yet, so I'm sure some of it breaks in other browsers.
+
 * TODO Yet to be implemented
 
 - [-] Lists
@@ -100,13 +89,4 @@ Tables aren't very well supported. Org lets you do some crazy things with tables
 - Deadline/schedule items
 - Timestamps & tags in general
 - Todo states other than "TODO" and "DONE"
-
-* But I just want a single include statement to put in my org file header!
-
-This is all very well, but maybe you don't want to bother tweaking anything. Maybe you just want a single, combined, remote-hosted CSS file you can include in the header of your Org files for easy exporting. How about this:
-
-#+BEGIN_SRC org
-  ,#+OPTIONS: toc:nil num:nil html-style:nil
-  ,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hjst/org-mode.css/master/combined.css" />
-#+END_SRC
 
