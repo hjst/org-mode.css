@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-04-08 Sat 09:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Henry's Emacs configuration</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Henry Todd" />
+<link rel="stylesheet" type="text/css" href="https://hjst.github.io/org-mode.css/combined.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Henry's Emacs configuration</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1dc7323">Notes about this file itself (how does this work?)</a>
+<ul>
+<li><a href="#org9469e59"><span class="done DONE">DONE</span> Work out why setting <code>:tangle yes</code> in the header-args doesn't work</a></li>
+<li><a href="#org3d97070"><span class="todo TODO">TODO</span> Auto-run the tangle function when saving this file</a></li>
+</ul>
+</li>
+<li><a href="#org50d4f1f">Emacs built-ins</a>
+<ul>
+<li><a href="#orgb22c5da">Startup</a></li>
+<li><a href="#org38b79a8">Global custom functions</a>
+<ul>
+<li><a href="#org39049e7">Buffer local keys</a></li>
+<li><a href="#orga942e28">Smarter "go to beginning of line"</a></li>
+</ul>
+</li>
+<li><a href="#org020f43b">Text editing</a>
+<ul>
+<li><a href="#org5d44010">Spelling</a></li>
+<li><a href="#org76ec1b8">Viper mode</a></li>
+<li><a href="#org3526de2">Line wrapping</a></li>
+</ul>
+</li>
+<li><a href="#org836e13f">Ido mode</a></li>
+<li><a href="#org12bc247">rcirc</a>
+<ul>
+<li><a href="#orgac5d76b"><span class="done DONE">DONE</span> Split rcirc config into light + heavy bits</a></li>
+<li><a href="#org5341c64"><span class="todo TODO">TODO</span> Configure nick colouring?</a></li>
+</ul>
+</li>
+<li><a href="#org6464812">Gnus</a>
+<ul>
+<li><a href="#org86ab98c">RSS feeds &amp; mailing lists via NNTP</a></li>
+<li><a href="#org526e53e"><span class="done DONE">DONE</span> Secure my auth credentials</a></li>
+</ul>
+</li>
+<li><a href="#orgde5e5b4">EWW</a></li>
+<li><a href="#org53d2b0e">Buffer management</a></li>
+<li><a href="#org89ce888">TRAMP</a></li>
+<li><a href="#org3baa121">Secrets</a></li>
+</ul>
+</li>
+<li><a href="#orgc4a2334">MELPA packages</a>
+<ul>
+<li><a href="#org9871167">Repository &amp; use-package initialisation</a></li>
+<li><a href="#org106cd93">Better defaults</a></li>
+<li><a href="#org8f20b90">Solarized colour theme</a></li>
+<li><a href="#org605b636">Persistent scratch buffer</a></li>
+<li><a href="#orgac91445">Org-mode</a>
+<ul>
+<li><a href="#org75974e6">Clean mode</a></li>
+</ul>
+</li>
+<li><a href="#org7eeeadb">theme-changer</a></li>
+<li><a href="#org51eb331">Smex</a></li>
+<li><a href="#org357c896">simple-mpc</a>
+<ul>
+<li><a href="#org060ca83"><span class="todo TODO">TODO</span> Add emacs keybinds for mpc play/pause/next</a></li>
+</ul>
+</li>
+<li><a href="#org0568f37">Magit</a></li>
+<li><a href="#org0e2cde2">Git auto-commit</a></li>
+<li><a href="#org8e67841">Simplenote</a></li>
+<li><a href="#orge30756e">Jira for Org mode</a></li>
+<li><a href="#orgeeda1a6">Python packages</a></li>
+<li><a href="#org707a695">YAML</a></li>
+<li><a href="#org316310d">Markdown</a></li>
+<li><a href="#org866eac5">js2-mode</a></li>
+<li><a href="#org537a98f">Web mode</a></li>
+<li><a href="#orgd5da310">JSON</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1dc7323" class="outline-2">
+<h2 id="org1dc7323">Notes about this file itself (how does this work?)</h2>
+<div class="outline-text-2" id="text-org1dc7323">
+<p>
+This Org-mode file is used to generate my Emacs config via the "tangle" feature. The various source blocks in this file will be written out to <code>init.el</code> whenever the <code>org-babel-tangle</code> function is called.
+</p>
+</div>
+
+<div id="outline-container-org9469e59" class="outline-3">
+<h3 id="org9469e59"><span class="done DONE">DONE</span> Work out why setting <code>:tangle yes</code> in the header-args doesn't work</h3>
+<div class="outline-text-3" id="text-org9469e59">
+<p>
+For some reason, despite both the <a href="http://www.gnu.org/software/emacs/manual/html_node/org/Header-arguments-in-Org-mode-properties.html">GNU</a> and <a href="http://orgmode.org/manual/Header-arguments-in-Org-mode-properties.html#Header-arguments-in-Org-mode-properties">Orgmode.org</a> manuals telling me it should be possible, I can't just set <code>:tangle yes</code> once at the top of the file and be done with it.
+</p>
+
+<p>
+<b>Progress:</b> it does work when <code>:header-args: :tangle yes</code> is put in the properties drawers of the top-level headings, but not when <code>#+PROPERTY: header-args :tangle yes</code> is put at the top of the file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3d97070" class="outline-3">
+<h3 id="org3d97070"><span class="todo TODO">TODO</span> Auto-run the tangle function when saving this file</h3>
+<div class="outline-text-3" id="text-org3d97070">
+<p>
+Not really sure it's worth it given how little I change this file, but could prevent confusion/annoyance if I ever forget to run <code>org-babel-tangle</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org50d4f1f" class="outline-2">
+<h2 id="org50d4f1f">Emacs built-ins</h2>
+<div class="outline-text-2" id="text-org50d4f1f">
+<p>
+Firstly I configure everything which is internal to Emacs itself (i.e. not using any third-party packages).
+</p>
+</div>
+
+<div id="outline-container-orgb22c5da" class="outline-3">
+<h3 id="orgb22c5da">Startup</h3>
+<div class="outline-text-3" id="text-orgb22c5da">
+<p>
+Skip the splash screen and go straight to the scratch buffer:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq inhibit-startup-message t)
+</pre>
+</div>
+
+<p>
+I flip-flop between Go Mono and Inconsolata for fonts; setting <code>:tangle no</code> on either of the following blocks is all that's needed. I should probably find out how to set fonts other than duplicating the Customize config.
+</p>
+
+<p>
+Go Mono, the update of Luxi Mono with better hinting:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Go Mono" :slant normal :weight normal :height 110 :width normal)))))
+</pre>
+</div>
+
+<p>
+Inconsolata, classic improvement on Consolas:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Inconsolata" :slant normal :weight normal :height 120 :width normal)))))
+</pre>
+</div>
+
+<p>
+I don't use the scratch buffer for elisp, I use it for notes instead so change the mode from elisp to Org:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq initial-major-mode 'org-mode)
+(setq initial-scratch-message "\
+#+STARTUP: content
+Use this for quick notes you can't be bothered to think about filing.
+It is automatically saved &amp; restored when quitting/launching emacs.
+
+That said, it is sometimes useful to have an elisp scratch buffer:
+
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
+")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38b79a8" class="outline-3">
+<h3 id="org38b79a8">Global custom functions</h3>
+<div class="outline-text-3" id="text-org38b79a8">
+<p>
+Reusable functions, yay!
+</p>
+</div>
+
+<div id="outline-container-org39049e7" class="outline-4">
+<h4 id="org39049e7">Buffer local keys</h4>
+<div class="outline-text-4" id="text-org39049e7">
+<p>
+For setting keybindings local to a particular <i>buffer</i> rather than mode, you need this function (<code>local-set-key</code> will work otherwise).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun buffer-local-set-key (key func)
+  (interactive "KSet key on this buffer: \naCommand: ")
+  (let ((name (format "%s-magic" (buffer-name))))
+    (eval
+     `(define-minor-mode ,(intern name)
+        "Automagically built minor mode to define buffer-local keys."))
+    (let* ((mapname (format "%s-map" name))
+           (map (intern mapname)))
+      (unless (boundp (intern mapname))
+        (set map (make-sparse-keymap)))
+      (eval
+       `(define-key ,map ,key func)))
+    (funcall (intern name) t)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga942e28" class="outline-4">
+<h4 id="orga942e28">Smarter "go to beginning of line"</h4>
+<div class="outline-text-4" id="text-orga942e28">
+<p>
+Instead of the default <code>C-a</code> behaviour, map a function to cycle between column 0 and the start of text indentation.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun hjst::cycle-line-start ()
+  "Cycle between column 0 and the start of indentation."
+  (interactive)
+  (let ((orig (point)))
+    (back-to-indentation)
+    (when (= orig (point))
+      (move-beginning-of-line 1))))
+
+(global-set-key (kbd "C-a") 'hjst::cycle-line-start)
+(global-set-key (kbd "&lt;home&gt;") 'hjst::cycle-line-start)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org020f43b" class="outline-3">
+<h3 id="org020f43b">Text editing</h3>
+<div class="outline-text-3" id="text-org020f43b">
+</div><div id="outline-container-org5d44010" class="outline-4">
+<h4 id="org5d44010">Spelling</h4>
+<div class="outline-text-4" id="text-org5d44010">
+<p>
+The default Emacs ispell package works well on my system. Emacs will <a href="https://www.emacswiki.org/emacs/InteractiveSpell">apparently</a> choose <code>aspell</code> above <code>hunspell</code>, and either of them above <code>ispell</code>. With the <code>aspell-en</code> package installed on Fedora, and my locale set to <code>en_GB</code> it all works as expected.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org76ec1b8" class="outline-4">
+<h4 id="org76ec1b8">Viper mode</h4>
+<div class="outline-text-4" id="text-org76ec1b8">
+<p>
+I like being able to enable/disable Viper mode (vi emulation) for those times when I really want vi modal commands for editing some text (mostly I live without them). So far I prefer this to "full time" solutions like Evil, but I'm still experimenting.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-set-key (kbd "&lt;f2&gt;") 'toggle-viper-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3526de2" class="outline-4">
+<h4 id="org3526de2">Line wrapping</h4>
+<div class="outline-text-4" id="text-org3526de2">
+<p>
+I like to enable visual line mode (word-wrapping) for all modes that inherit from text mode (i.e. any kind of prose writing, but leaves code untouched).
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org836e13f" class="outline-3">
+<h3 id="org836e13f">Ido mode</h3>
+<div class="outline-text-3" id="text-org836e13f">
+<p>
+For a full explanation of why, <a href="https://www.masteringemacs.org/article/introduction-to-ido-mode">see Mickey Petersen's introduction to Ido Mode</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org12bc247" class="outline-3">
+<h3 id="org12bc247">rcirc</h3>
+<div class="outline-text-3" id="text-org12bc247">
+<p>
+References:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/rcirc.html">Manual</a></li>
+<li><a href="https://keramida.wordpress.com/2015/01/25/some-useful-rcirc-snippets/">Blog with some snippets</a></li>
+</ul>
+
+<p>
+rcirc has the limitation that it will only open 1 connection per host (not even to different ports). This means that ZNC's method of "open multiple connections each with a different username like <code>henry/networkname</code>" fails. One workaround is to create host aliases in <code>/etc/hosts</code>. Or, to simplify this config mess, connect once and use the ZNC <code>JumpNetwork</code> <a href="http://wiki.znc.in/Using_commands">command</a>.
+</p>
+
+<p>
+This is connecting through a local ssh tunnel with <a href="http://www.harding.motd.ca/autossh/">autossh</a> like so: <code>autossh -M 0 -f -N -L 34567:localhost:34567 pi</code>, see <a href="../ssh_config">dotfiles/ssh<sub>config</sub></a> for further details.
+</p>
+
+<p>
+The actual server config <code>setq</code> is in <code>~/.emacs.d/secrets.el.gpg</code> and looks like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq rcirc-server-alist
+      '(
+        ("localhost"
+         :port 34567
+         :encryption tls
+         :nick "henry"
+         :user-name "henry/network-name"
+         :password "totally-super-secure-password")))
+</pre>
+</div>
+
+<p>
+Turn on the modeline activity indicators (only load it if/after I run rcirc in the current emacs session).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(eval-after-load "rcirc"
+  '(progn
+     ;; enable tracking of activity pings as a minor mode
+     (rcirc-track-minor-mode 1)))
+</pre>
+</div>
+
+<p>
+Adjust a few cosmetic settings for display of lines. The <a href="(describe-variable 'rcirc-fill-flag)">rcirc-fill-flag</a> variable, set to <code>nil</code>, means no padding on wrapped lines: this makes for a more compact display for smaller frames.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq rcirc-prompt "»» "
+      rcirc-time-format "%H:%M "
+      rcirc-fill-flag t)
+</pre>
+</div>
+
+<p>
+<a href="https://www.gnu.org/software/emacs/manual/rcirc.html#Scrolling-conservatively">"Conservative" scrolling</a> means keeping the current line at the bottom of the buffer, which is what you want for irc as new lines appear from the server.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-hook 'rcirc-mode-hook
+          (lambda ()
+            (set (make-local-variable 'scroll-conservatively) 8192)))
+</pre>
+</div>
+
+<p>
+For some odd reason visual line mode (i.e. text wrapping at word boundaries) isn't on by default for rcirc buffers, so explicitly set it here.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-hook 'rcirc-mode-hook 'turn-on-visual-line-mode)
+</pre>
+</div>
+
+<p>
+The default colours in rcirc are garish, so replace some of them with <a href="http://ethanschoonover.com/solarized#the-values">solarized equivalents</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(eval-after-load "rcirc"
+  '(progn
+     ;; Use solarized blue for my own nick
+     (set-face-attribute 'rcirc-my-nick nil :foreground "#268bd2")
+     ;; Use solarized gold for other nicks
+     (set-face-attribute 'rcirc-other-nick nil :foreground "#b58900")
+     ;; Change my nick highlight from bold neon purple to normal solarized red
+     (set-face-attribute 'rcirc-nick-in-message-full-line nil :foreground "#cb4b16" :weight 'normal)
+     (set-face-attribute 'rcirc-nick-in-message nil :foreground "#cb4b16" :weight 'normal)
+     ;; Use solarized green instead of bright red for server messages
+     (set-face-attribute 'rcirc-server nil :foreground "#859900")))
+</pre>
+</div>
+
+<p>
+Killing an rcirc buffer with <code>C-x k</code> results in a <code>/part</code>, which isn't ideal with ZNC. The following (<a href="https://superuser.com/a/264694">taken from here</a>) defines a new "detach this buffer <i>then</i> kill it" function, and binds it to <code>C-c C-d</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(eval-after-load "rcirc"
+  '(progn  
+     (defun rcirc-detach-buffer ()
+       (interactive)
+       (let ((buffer (current-buffer)))
+         (when (and (rcirc-buffer-process)
+                    (eq (process-status (rcirc-buffer-process)) 'open))
+           (with-rcirc-server-buffer
+            (setq rcirc-buffer-alist
+                  (rassq-delete-all buffer rcirc-buffer-alist)))
+           (rcirc-update-short-buffer-names)
+           (if (rcirc-channel-p rcirc-target)
+               (rcirc-send-string (rcirc-buffer-process)
+                                  (concat "DETACH " rcirc-target))))
+         (setq rcirc-target nil)
+         (kill-buffer buffer)))
+
+     (define-key rcirc-mode-map [(control c) (control d)] 'rcirc-detach-buffer)))
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgac5d76b" class="outline-4">
+<h4 id="orgac5d76b"><span class="done DONE">DONE</span> Split rcirc config into light + heavy bits</h4>
+<div class="outline-text-4" id="text-orgac5d76b">
+<p>
+The <code>rcirc-track-minor-mode</code> call for instance, should only ever happen after the program is running. Perhaps the static config of the server details could be split out of the hook?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5341c64" class="outline-4">
+<h4 id="org5341c64"><span class="todo TODO">TODO</span> Configure nick colouring?</h4>
+<div class="outline-text-4" id="text-org5341c64">
+<p>
+<a href="https://www.emacswiki.org/emacs/rcircColoredNicks">Details are here</a>, it's simple enough: load a <code>.el</code> file, configure which colours you want to use, done. Seem to be doing ok without it though so far&#x2026;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6464812" class="outline-3">
+<h3 id="org6464812">Gnus</h3>
+<div class="outline-text-3" id="text-org6464812">
+<p>
+I'm still experimenting with different Gnus setups; for the moment I'm accessing Gmail directly via IMAP (rather than mirroring locally) and using the <a href="http://www.gnu.org/software/emacs/manual/html_mono/gnus.html#nnir">search</a> / expire / score mechanics.
+</p>
+
+<p>
+I should probably break up &amp; document this messy block sometime:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq user-mail-address "henry@hjst.org"
+      user-full-name "Henry Todd")
+
+;; ask encryption password once
+(setq epa-file-cache-passphrase-for-symmetric-encryption t)
+
+(require 'nnir) ; used for searching mails
+;; @see http://gnus.org/manual/gnus_397.html
+(setq gnus-select-method
+             '(nnimap "gmail"
+                      (nnimap-address "imap.gmail.com")
+                      (nnimap-server-port 993)
+                      (nnimap-stream ssl)
+                      (nnir-search-engine imap)
+                      ; @see http://www.gnu.org/software/emacs/manual/html_node/gnus/Expiring-Mail.html
+                      ;; press 'E' to expire email
+                      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
+                      (nnmail-expiry-wait 3)))
+
+(setq gnus-thread-sort-functions
+      '((not gnus-thread-sort-by-date)
+        (not gnus-thread-sort-by-number)))
+
+; NO 'passive
+(setq gnus-use-cache t)
+
+;; Fetch only part of the article if we can.
+(setq gnus-read-active-file 'some)
+
+;; Tree view for groups.
+(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+
+;; Thread mail whenever possible, try to intelligently ignore Subject:
+(setq gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references)
+(setq gnus-thread-ignore-subject 'fuzzy)
+;; Pull in enough old messages to show complete threads
+(setq gnus-fetch-old-headers 'some)
+
+;; Also, I prefer to see only the top level message.  If a message has
+;; several replies or is part of a thread, only show the first message.
+;; 'gnus-thread-ignore-subject' will ignore the subject and
+;; look at 'In-Reply-To:' and 'References:' headers.
+(setq gnus-thread-hide-subtree t)
+
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+      smtpmail-auth-credentials (expand-file-name "~/.authinfo")
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]"
+      smtpmail-local-domain "raspberrypi"
+      ;; gnutls-bin package must be installed for this to work
+      starttls-use-gnutls t)
+</pre>
+</div>
+
+<p>
+If Emacs is ever killed unceremoniously, <a href="http://www.gnu.org/software/emacs/manual/html_mono/gnus.html#Auto-Save">Gnus has an auto-save "dribble" file</a> which it uses to track read states, and it asks if you want to load it when next started. Can't see why you'd ever answer "no" to that question, so I override the default behaviour.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq gnus-always-read-dribble-file t)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org86ab98c" class="outline-4">
+<h4 id="org86ab98c">RSS feeds &amp; mailing lists via NNTP</h4>
+<div class="outline-text-4" id="text-org86ab98c">
+<p>
+<a href="http://quimby.gnus.org/lmi/lmi.html">Thank you Lars</a>. Here's the entirety of my Gmane config:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-to-list 'gnus-secondary-select-methods '(nntp "news.gmane.org"))
+</pre>
+</div>
+
+<p>
+My group subscriptions &amp; read/unread state tracking live in <code>~/.newsrc</code> and <code>~/.newsrc.eld</code>. Those are managed by Gnus and I don't touch them. If/when I start Gnus without them on a new machine, I'd need to <a href="http://emacs-primer.branchable.com/posts/Participate_In_Emacs_Mailinglists_Via_Gmane/">go through the Server list view for each and mark/unmark my groups</a> again. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org526e53e" class="outline-4">
+<h4 id="org526e53e"><span class="done DONE">DONE</span> Secure my auth credentials</h4>
+<div class="outline-text-4" id="text-org526e53e">
+<p>
+Creds are stored in <code>~/.authinfo.gpg</code>, which emacs will auto-handle encrypting/decrypting via EasyPG so long as the <code>.gpg</code> extension is present. See the <code>epa-file-cache-passphrase-for-symmetric-encryption</code> variable for more info.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgde5e5b4" class="outline-3">
+<h3 id="orgde5e5b4">EWW</h3>
+<div class="outline-text-3" id="text-orgde5e5b4">
+<p>
+I'm mostly happy with the Emacs web browser (especially the Instapaper-esque <code>R</code> command), but it defaults to using proportional fonts so I disable that.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq shr-use-fonts nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org53d2b0e" class="outline-3">
+<h3 id="org53d2b0e">Buffer management</h3>
+<div class="outline-text-3" id="text-org53d2b0e">
+<p>
+I very rarely want to kill a buffer other than the one I'm currently in (and I use IBuffer for that anyway) so remap <code>C-x k</code> to be <code>kill-this-buffer</code> instead of <code>kill-buffer</code> to avoid the prompt (still prompts if buffer contains unsaved changes):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-set-key (kbd "C-x k") 'kill-this-buffer)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org89ce888" class="outline-3">
+<h3 id="org89ce888">TRAMP</h3>
+<div class="outline-text-3" id="text-org89ce888">
+<p>
+From <a href="https://www.emacswiki.org/emacs/TrampMode">the TRAMP wiki page</a>, this apparently speeds things up:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq tramp-default-method "ssh")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3baa121" class="outline-3">
+<h3 id="org3baa121">Secrets</h3>
+<div class="outline-text-3" id="text-org3baa121">
+<p>
+Put passwords or other similarly sensitive info in a auto-encrypt/auto-decrypt GPG file. Gnus does its own version of this with authinfo.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(load-file "~/.emacs.d/secrets.el.gpg")
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc4a2334" class="outline-2">
+<h2 id="orgc4a2334">MELPA packages</h2>
+<div class="outline-text-2" id="text-orgc4a2334">
+</div>
+
+<div id="outline-container-org9871167" class="outline-3">
+<h3 id="org9871167">Repository &amp; use-package initialisation</h3>
+<div class="outline-text-3" id="text-org9871167">
+<p>
+This is all done with John Wiegley's <a href="https://github.com/jwiegley/use-package">use-package</a>. First thing is to define the list of repositories. For now I'm sticking with MELPA and the dedicated Org repo.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/") t)
+</pre>
+</div>
+
+<p>
+Setting <code>package-enable-at-startup</code> to nil disables the autoloading of all packages which would normally happen at init. It's faster to let <code>use-package</code> handle loading of packages as they're needed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq package-enable-at-startup nil)
+(package-initialize)
+</pre>
+</div>
+
+<p>
+The next bit is cute: it bootstraps <code>use-package</code> if it isn't already installed. This is handy when cloning my dotfiles repo to a new machine, as all I need to do is start emacs and wait while everything installs.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+</pre>
+</div>
+
+<p>
+I'm using <code>use-package</code> as my sole package installation method, so I set this once here rather than every time calling the function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq use-package-always-ensure t)
+</pre>
+</div>
+
+<p>
+Setup is complete so hand over control to <code>use-package</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(eval-when-compile
+  (require 'use-package))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org106cd93" class="outline-3">
+<h3 id="org106cd93">Better defaults</h3>
+<div class="outline-text-3" id="text-org106cd93">
+<p>
+This (<a href="https://github.com/technomancy/better-defaults">Github</a>) is a small collection of preference tweaks I agree with, mostly from the <code>#emacs</code> channel on freenode. The only thing I re-enable is the menu bar, which I do still find useful.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package better-defaults
+  :demand t
+  :config (menu-bar-mode 1))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8f20b90" class="outline-3">
+<h3 id="org8f20b90">Solarized colour theme</h3>
+<div class="outline-text-3" id="text-org8f20b90">
+<p>
+It's a toss-up for me which is better: solarised or tango. Currently I'm leaning towards solarised. Check <a href="https://github.com/bbatsov/solarized-emacs#customisations">the customisation section of the README</a> for the full details. However, it does need a few tweaks.
+</p>
+
+<p>
+Use less garish markers for things like git-gutter &amp; flycheck:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq solarized-emphasize-indicators nil)
+</pre>
+</div>
+
+<p>
+Keep headings and titles as monospace:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq solarized-use-variable-pitch nil)
+</pre>
+</div>
+
+<p>
+These make the modelines look flatter and makes the active buffer more obvious:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq x-underline-at-descent-line t)
+(setq solarized-high-contrast-mode-line t)
+</pre>
+</div>
+
+<p>
+Load the light variant by default:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package solarized-theme
+  :config (load-theme 'solarized-light t))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org605b636" class="outline-3">
+<h3 id="org605b636">Persistent scratch buffer</h3>
+<div class="outline-text-3" id="text-org605b636">
+<p>
+I sometimes start emacs just to quickly jot down some text; this package lets me treat the scratch buffer as a magically auto-saving place to shove stuff without thinking.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package persistent-scratch
+  :config
+  (persistent-scratch-setup-default)
+  (persistent-scratch-autosave-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac91445" class="outline-3">
+<h3 id="orgac91445">Org-mode</h3>
+<div class="outline-text-3" id="text-orgac91445">
+<p>
+Install a more-up-to-date Org mode from the dedicated ELPA repo, which overrides the version bundled with emacs.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package org
+  :pin org)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org75974e6" class="outline-4">
+<h4 id="org75974e6">Clean mode</h4>
+<div class="outline-text-4" id="text-org75974e6">
+<p>
+I prefer the default view of org-mode documents to be <a href="http://orgmode.org/manual/Clean-view.html">clean</a>. For longer book-like (rather than outline/list-like) documents the <code>#+STARTUP:</code> feature <a href="http://orgmode.org/manual/In_002dbuffer-settings.html">can be used at the top of the file</a> to customise things.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq org-startup-indented t org-hide-leading-stars t)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7eeeadb" class="outline-3">
+<h3 id="org7eeeadb">theme-changer</h3>
+<div class="outline-text-3" id="text-org7eeeadb">
+<p>
+This configures emacs to switch automatically between a light/dark theme as the sun goes down.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq calendar-location-name "Hereford, GB")
+(setq calendar-latitude 52.06)
+(setq calendar-longitude -2.72)
+(use-package theme-changer
+  :config (change-theme 'solarized-light 'solarized-dark))
+</pre>
+</div>
+
+<p>
+N.B. if you get <code>Wrong type argument: number-or-marker-p</code> errors when initialising this package, check that the <code>calendar-*</code> defs above match your current timezone. You'll get an error if the Emacs calendar location doesn't match your computer's timezone (<a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Sunrise_002fSunset.html">see manual</a>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org51eb331" class="outline-3">
+<h3 id="org51eb331">Smex</h3>
+<div class="outline-text-3" id="text-org51eb331">
+<p>
+<a href="https://github.com/nonsequitur/smex">Smex</a> is an <code>M-x</code> replacement that provides <code>ido</code> style completion. It's also capable of restricting the available commands to those specific to the active major mode (e.g. org-mode or magit).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package smex
+  :config (smex-initialize)
+  :bind (("M-x" . smex)
+         ("M-X" . smex-major-mode-commands)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org357c896" class="outline-3">
+<h3 id="org357c896">simple-mpc</h3>
+<div class="outline-text-3" id="text-org357c896">
+<p>
+Acts as a lightweight emacs UI for mpc. Mingus is the main alternative, but that implements its own mpd lib in elisp vs simple-mpc's use of the existing mpc binary. I guess if I ever need a Windows client Mingus would be useful? Source is <a href="https://github.com/jorenvo/simple-mpc">on Github</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package simple-mpc)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org060ca83" class="outline-4">
+<h4 id="org060ca83"><span class="todo TODO">TODO</span> Add emacs keybinds for mpc play/pause/next</h4>
+</div>
+</div>
+
+<div id="outline-container-org0568f37" class="outline-3">
+<h3 id="org0568f37">Magit</h3>
+<div class="outline-text-3" id="text-org0568f37">
+<p>
+Makes working with git repos within emacs a breeze. Just hit <code>C-x g</code> to begin.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package magit
+  :bind ("C-x g" . magit-status))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e2cde2" class="outline-3">
+<h3 id="org0e2cde2">Git auto-commit</h3>
+<div class="outline-text-3" id="text-org0e2cde2">
+<p>
+I find this useful for my notes files, it auto-commits &amp; does a git push every time the files are written. I wish magit offered this (it sort of does with its <a href="https://magit.vc/manual/magit/Wip-modes.html">wip options</a>?) but <a href="https://github.com/ryuslash/git-auto-commit-mode">this package</a> does the job. I control it with a <code>.dir-locals.el</code> file that evals <code>git-auto-commit-mode</code> for everything under <code>~/Notes</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package git-auto-commit-mode
+  :init (setq gac-automatically-push-p t))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8e67841" class="outline-3">
+<h3 id="org8e67841">Simplenote</h3>
+<div class="outline-text-3" id="text-org8e67841">
+<p>
+Turns emacs into a <a href="https://simplenote.com/">Simplenote</a> client for easy syncing of notes across devices. It maintains a local cache of notes files, and requires manual push via the API (see key bindings below).
+</p>
+
+<p>
+Notes specially marked in the API as "markdown formatted" are treated specially; all other notes are assumed to be in Org format (and load <code>org-mode</code> for formatting/editing).
+</p>
+
+<p>
+I use the <a href="#org39049e7">Buffer local keys</a> function defined above to override the standard <code>C-x C-s</code> binding for <code>save-buffer</code>. I also add a binding to assign tags to notes, and a global bind for showing the list of notes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package simplenote2
+  :init
+  (setq simplenote2-notes-mode 'org-mode)
+  (setq simplenote2-markdown-notes-mode 'markdown-mode)
+  (simplenote2-setup)
+  :config
+  (add-hook 'simplenote2-note-mode-hook
+            (lambda ()
+              (buffer-local-set-key (kbd "C-x C-s") 'simplenote2-push-buffer)
+              (buffer-local-set-key (kbd "C-c C-t") 'simplenote2-add-tag)))
+  :bind ("&lt;f4&gt;" . simplenote2-list))
+</pre>
+</div>
+
+<p>
+NB: the <code>~/.emacs.d/secrets.el.gpg</code> file contains the following sensitive config:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq simplenote2-email "user@host.com")
+(setq simplenote2-password "hunter2")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge30756e" class="outline-3">
+<h3 id="orge30756e">Jira for Org mode</h3>
+<div class="outline-text-3" id="text-orge30756e">
+<p>
+This lets me pull in + manipulate Jira tickets with Org mode. It's useful when I need to write/markup long ticket descriptions and don't want to use the web UI (and risk losing data if the VPN has gone down). Bit of a pain for day-to-day small stuff though.
+</p>
+
+<p>
+Username/password are configured in authinfo like so: <code>machine your-site.atlassian.net login you@example.com password yourPassword port 80</code>. If these aren't present a prompt appears when first connecting; the creds are cached for the life of the emacs session.
+</p>
+
+<p>
+To get started open e.g. <code>~/.org-jira/DAZ.org</code>, run <code>M-x org-jira-get-issue</code> and enter a ticket reference like "ABC-123". When you want to push your changes to Jira, do <code>org-jira-update-issue</code>.
+</p>
+
+<p>
+To add a comment, under the existing comments (or at the end of the issue's section) add:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org">** Comment:
+Then type the body of your comment here. This is handy if you want to leave a long, formatted comment with a bunch of copy/pasting.
+
+_NOTE:_ the colon after "Comment" is essential
+</pre>
+</div>
+
+<p>
+Then, with the cursor within the comment, run <code>org-jira-update-comment</code>.
+</p>
+
+<p>
+There's <a href="https://www.youtube.com/watch?v=6Sp3h1Qlf4w">a YouTube screencast</a> that shows more usage examples. See also the <a href="(describe-function 'org-jira-mode)">documentation for the org-jira-mode function</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package org-jira
+  :init (setq jiralib-url "https://issues.lolacloud.com"))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeeda1a6" class="outline-3">
+<h3 id="orgeeda1a6">Python packages</h3>
+<div class="outline-text-3" id="text-orgeeda1a6">
+<p>
+For now at least, I'm avoiding using <a href="https://elpy.readthedocs.io/en/latest/">Elpy</a> because…
+</p>
+
+<ul class="org-ul">
+<li>it's got a lot of moving parts I don't understand</li>
+<li>the virtualenv integration doesn't work on Windows</li>
+<li>I can get by just fine with the built-in python.el</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org707a695" class="outline-3">
+<h3 id="org707a695">YAML</h3>
+<div class="outline-text-3" id="text-org707a695">
+<p>
+For now the default <code>yaml-mode</code> behaviour seems to be fine, but any required Ansible-specific tweaks would go here.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package yaml-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org316310d" class="outline-3">
+<h3 id="org316310d">Markdown</h3>
+<div class="outline-text-3" id="text-org316310d">
+<p>
+Jason Belvins' markdown mode handles everything here; I've not found a reason to change the defaults yet. I use <a href="https://github.com/trentm/python-markdown2">markdown2</a> as a local implementation, which is installed on Fedora via the <code>python3-markdown2</code> package. The <code>tables</code> and <code>fenced-code-blocks</code> <a href="https://github.com/trentm/python-markdown2/wiki/Extras">extras</a> are enabled to better approximate Github's flavour.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "markdown2-3 --extras tables,fenced-code-blocks"))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org866eac5" class="outline-3">
+<h3 id="org866eac5">js2-mode</h3>
+<div class="outline-text-3" id="text-org866eac5">
+<p>
+The built-in javascript mode is pretty terrible, so I'm trying <a href="https://github.com/mooz/js2-mode/">js2-mode</a> as an alternative.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package js2-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (setq js-indent-level 2))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org537a98f" class="outline-3">
+<h3 id="org537a98f">Web mode</h3>
+<div class="outline-text-3" id="text-org537a98f">
+<p>
+Works very well for editing plain HTML, as well as being smart about things like CSS/JS embedded in HTML docs, as well as templating logic (Mustache, ERB etc.).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package web-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  :config
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd5da310" class="outline-3">
+<h3 id="orgd5da310">JSON</h3>
+<div class="outline-text-3" id="text-orgd5da310">
+<p>
+The default highlighting for JSON documents in emacs isn't great (it's handled by js-mode). This adds a dedicated JSON mode, as well as the handy "display path to the object at point" function (bound to <code>C-c C-p</code> by default). I rebind <code>C-c C-f</code> to <code>json-pretty-print</code>, which is a builtin from Emacs 24.4 onwards.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package json-snatcher)
+(use-package json-mode
+  :bind ("C-c C-f" . json-pretty-print))
+</pre>
+</div>
+
+<p>
+I do still miss <a href="https://github.com/elzr/vim-json">Eli Parra's vim-json</a> though.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Henry Todd</p>
+<p class="date">Created: 2017-04-08 Sat 09:14</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

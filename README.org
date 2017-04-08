@@ -1,6 +1,6 @@
 #+OPTIONS: toc:nil num:nil html-style:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://hjst.github.io/org-mode.css/combined.css" />
-#+TITLE:Org mode CSS
+#+TITLE: Org mode CSS
 
 A stylesheet which makes rendered HTML exports from an Org document look like the unrendered buffer in Emacs. Yes, it's daft. Inspired by [[https://github.com/mrcoles/markdown-css/][Peter Coles' markdown.css]]. 
 

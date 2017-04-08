@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2017-04-08 Sat 09:15 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org mode CSS</title>
-<!-- 2017-04-06 Thu 23:54 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Henry Todd" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Henry Todd" />
 <link rel="stylesheet" type="text/css" href="https://hjst.github.io/org-mode.css/combined.css" />
 <script type="text/javascript">
 /*
@@ -64,22 +65,17 @@ A stylesheet which makes rendered HTML exports from an Org document look like th
 </p>
 
 <ul class="org-ul">
-<li><a href="https://hjst.github.io/org-mode.css/init.html">View a longer example document</a>
-</li>
+<li><a href="https://hjst.github.io/org-mode.css/init.html">View a longer example document</a></li>
 </ul>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">How to use it</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org5b61563" class="outline-2">
+<h2 id="org5b61563">How to use it</h2>
+<div class="outline-text-2" id="text-org5b61563">
 <ol class="org-ol">
-<li>The styles assume <a href="https://github.com/necolas/normalize.css/">Normalize.css</a> as a base, so grab that first.
-</li>
-<li>Add the <code>org-syntax.css</code> file to your build, this will style the various elements.
-</li>
-<li>Define a colour scheme of some sort. If you like <a href="http://ethanschoonover.com/solarized">Solarized</a> you can use the included <code>solarized-light.css</code> as-is, or use it as a starting point for something else.
-</li>
-<li>Add any additional styling you need to fit in with your design (headers, footers, content width etc.).
-</li>
+<li>The styles assume <a href="https://github.com/necolas/normalize.css/">Normalize.css</a> as a base, so grab that first.</li>
+<li>Add the <code>org-syntax.css</code> file to your build, this will style the various elements.</li>
+<li>Define a colour scheme of some sort. If you like <a href="http://ethanschoonover.com/solarized">Solarized</a> you can use the included <code>solarized-light.css</code> as-is, or use it as a starting point for something else.</li>
+<li>Add any additional styling you need to fit in with your design (headers, footers, content width etc.).</li>
 </ol>
 
 <p>
@@ -87,7 +83,6 @@ You can copy/paste the following into the <code>&lt;head&gt;</code> section of a
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-html">&lt;head&gt;
   &lt;!-- Step 1: Normalize --&gt;
   &lt;link rel="stylesheet" type="text/css"
@@ -121,15 +116,14 @@ You can copy/paste the following into the <code>&lt;head&gt;</code> section of a
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">I just want to copy/paste a thing in my org file!</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org19b4e6f" class="outline-2">
+<h2 id="org19b4e6f">I just want to copy/paste a thing in my org file!</h2>
+<div class="outline-text-2" id="text-org19b4e6f">
 <p>
 This is all very well, but maybe you don't want to bother tweaking anything. Maybe you just want a single, combined, remote-hosted CSS file you can include in the header of your Org files for easy exporting. How about this:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-org">#+OPTIONS: html-style:nil num:nil toc:nil
 #+HTML_HEAD: &lt;link rel="stylesheet" type="text/css" href="https://hjst.github.io/org-mode.css/combined.css" /&gt;
 </pre>
@@ -141,11 +135,11 @@ The <code>html-style:nil</code> bit disables the default Org export CSS. You alm
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Caveats</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orge961db9" class="outline-2">
+<h2 id="orge961db9">Caveats</h2>
+<div class="outline-text-2" id="text-orge961db9">
 <p>
-<code>&lt;code&gt;</code> / <code>&lt;pre&gt;</code> styles require a choice: if you're using a monospace font for the body text you need to differentiate them somehow. I chose to omit the "=" symbols from from inline <code>&lt;code&gt;</code> elements, and change their background colour instead.
+<code>&lt;code&gt;</code> / <code>&lt;pre&gt;</code> styles require a choice: if you're using a monospace font for the body text you need to differentiate them somehow. I chose to omit the "<code>" symbols from from inline =&lt;code&gt;</code> elements, and change their background colour instead.
 </p>
 
 <p>
@@ -160,60 +154,60 @@ Tables aren't very well supported. Org lets you do some crazy things with tables
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">Feature</th>
-<th scope="col" class="left">Possible?</th>
-<th scope="col" class="left">Status</th>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">Possible?</th>
+<th scope="col" class="org-left">Status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">Headers &amp; borders</td>
-<td class="left">Totally</td>
-<td class="left">Done</td>
+<td class="org-left">Headers &amp; borders</td>
+<td class="org-left">Totally</td>
+<td class="org-left">Done</td>
 </tr>
 
 <tr>
-<td class="left">Column grouping</td>
-<td class="left">Probably</td>
-<td class="left">One day</td>
+<td class="org-left">Column grouping</td>
+<td class="org-left">Probably</td>
+<td class="org-left">One day</td>
 </tr>
 
 <tr>
-<td class="left">Column alignment</td>
-<td class="left">Maybe</td>
-<td class="left">Maybe</td>
+<td class="org-left">Column alignment</td>
+<td class="org-left">Maybe</td>
+<td class="org-left">Maybe</td>
 </tr>
 
 <tr>
-<td class="left">Sortable columns</td>
-<td class="left">Maybe</td>
-<td class="left">Maybe</td>
+<td class="org-left">Sortable columns</td>
+<td class="org-left">Maybe</td>
+<td class="org-left">Maybe</td>
 </tr>
 
 <tr>
-<td class="left">Row grouping</td>
-<td class="left">Maybe</td>
-<td class="left">Maybe</td>
+<td class="org-left">Row grouping</td>
+<td class="org-left">Maybe</td>
+<td class="org-left">Maybe</td>
 </tr>
 
 <tr>
-<td class="left">Reveal formulas</td>
-<td class="left">Er…</td>
-<td class="left">No</td>
+<td class="org-left">Reveal formulas</td>
+<td class="org-left">Er…</td>
+<td class="org-left">No</td>
 </tr>
 
 <tr>
-<td class="left">Org-Plot integration</td>
-<td class="left">Actually…</td>
-<td class="left">No</td>
+<td class="org-left">Org-Plot integration</td>
+<td class="org-left">Actually…</td>
+<td class="org-left">No</td>
 </tr>
 </tbody>
 </table>
@@ -224,42 +218,30 @@ I also haven't tested it in anything other than Firefox yet, so I'm sure some of
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="todo TODO">TODO</span> Yet to be implemented</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgc00f22d" class="outline-2">
+<h2 id="orgc00f22d"><span class="todo TODO">TODO</span> Yet to be implemented</h2>
+<div class="outline-text-2" id="text-orgc00f22d">
 <ul class="org-ul">
-<li><code>[-]</code> Lists
+<li class="trans"><code>[-]</code> Lists
 <ul class="org-ul">
-<li><code>[X]</code> Nested with indentation
-</li>
-<li><code>[X]</code> Alternating bullet styles
-</li>
-<li><code>[X]</code> Checkbox-style lists
-</li>
-<li><code>[&#xa0;]</code> Percentage complete markers on lists <code>[%]</code>
-</li>
-</ul>
-</li>
-<li>Complex table layouts (e.g. column groups)
-</li>
-<li>Images (borders &amp; padding?)
-</li>
-<li>Property drawers
-</li>
-<li>Deadline/schedule items
-</li>
-<li>Timestamps &amp; tags in general
-</li>
-<li>Todo states other than "TODO" and "DONE"
-</li>
+<li class="on"><code>[X]</code> Nested with indentation</li>
+<li class="on"><code>[X]</code> Alternating bullet styles</li>
+<li class="on"><code>[X]</code> Checkbox-style lists</li>
+<li class="off"><code>[&#xa0;]</code> Percentage complete markers on lists <code>[%]</code></li>
+</ul></li>
+<li>Complex table layouts (e.g. column groups)</li>
+<li>Images (borders &amp; padding?)</li>
+<li>Property drawers</li>
+<li>Deadline/schedule items</li>
+<li>Timestamps &amp; tags in general</li>
+<li>Todo states other than "TODO" and "DONE"</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Henry Todd</p>
-<p class="date">Created: 2017-04-06 Thu 23:54</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2017-04-08 Sat 09:15</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
